@@ -35,8 +35,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO getById(String customerId) {
-        Customer customer = customerRepository.getById(customerId);
+    public CustomerDTO getByName(String customerName) {
+        Customer customer = customerRepository.getByName(customerName);
         return DaoToDtoMapper.mapDaoToDto(customer);
     }
 

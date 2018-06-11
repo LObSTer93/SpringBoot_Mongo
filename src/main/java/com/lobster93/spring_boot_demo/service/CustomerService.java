@@ -13,7 +13,7 @@ public interface CustomerService {
 
     void delete(long customerId);
 
-    CustomerDTO getById(String customerId);
+    CustomerDTO getByName(String customerName);
 
     void edit(String name, String email, long id);
 }

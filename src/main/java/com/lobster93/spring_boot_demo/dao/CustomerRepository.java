@@ -4,5 +4,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface CustomerRepository extends MongoRepository<Customer, String> {
 
-    Customer getById(String customerId);
+    Customer getByName(String customerName);
 }
