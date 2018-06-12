@@ -4,6 +4,7 @@ import com.lobster93.spring_boot_demo.dao.Customer;
 import com.lobster93.spring_boot_demo.dao.CustomerRepository;
 import com.lobster93.spring_boot_demo.dto.CustomerDTO;
 import com.lobster93.spring_boot_demo.dto.DaoToDtoMapper;
+import com.lobster93.spring_boot_demo.exceptions.CustomerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,18 +31,23 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(long customerId) {
-
+    public void delete(String customerName) {
+        List<Customer> customerEntities = getCustomerEntities(customerName);
+        customerRepository.deleteAll(customerEntities);
     }
 
     @Override
-    public CustomerDTO getByName(String customerName) {
-        Customer customer = customerRepository.getByName(customerName);
-        return DaoToDtoMapper.mapDaoToDto(customer);
+    public List<CustomerDTO> getByName(String customerName) {
+        return getCustomerEntities(customerName).stream()
+                .map(DaoToDtoMapper::mapDaoToDto)
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public void edit(String name, String email, long id) {
-
+    private List<Customer> getCustomerEntities(String customerName){
+        List<Customer> customers = customerRepository.getByName(customerName);
+        if(customers.isEmpty()){
+            throw new CustomerException("No such customers");
+        }
+        return customers;
     }
 }

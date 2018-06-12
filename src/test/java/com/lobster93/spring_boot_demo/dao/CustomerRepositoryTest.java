@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
@@ -34,16 +37,16 @@ public class CustomerRepositoryTest {
 
     @Test
     public void getByNameTest() {
-        Customer customer = customerRepository.getByName("Bill");
-        assertNotNull(customer);
+        List<Customer> customers = customerRepository.getByName("Bill");
+        assertEquals(customers.size(), 1);
     }
 
     @Test
     public void nullTest() {
-        Customer customer = customerRepository.getByName("Bill1");
-        assertNull(customer);
+        List<Customer> customers = customerRepository.getByName("Bill1");
+        assertEquals(customers.size(), 0);
 
-        customer = customerRepository.getByName(null);
-        assertNull(customer);
+        customers = customerRepository.getByName(null);
+        assertEquals(customers.size(), 0);
     }
 }

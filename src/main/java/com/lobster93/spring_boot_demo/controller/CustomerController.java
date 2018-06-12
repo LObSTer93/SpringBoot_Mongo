@@ -22,8 +22,8 @@ public class CustomerController {
         return customerService.findAll();
     }
 
-    @GetMapping("/{customerId}")
-    public CustomerDTO getCustomer(@PathVariable("customerId") String customerId){
-        return customerService.getByName(customerId);
+    @GetMapping("/{customerName}")
+    public List<CustomerDTO> getCustomer(@PathVariable("customerName") String customerName){
+        return customerService.getByName(customerName);
     }
 }

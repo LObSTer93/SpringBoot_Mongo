@@ -11,9 +11,7 @@ public interface CustomerService {
 
     void save(Customer customer);
 
-    void delete(long customerId);
+    void delete(String customerName);
 
-    CustomerDTO getByName(String customerName);
-
-    void edit(String name, String email, long id);
+    List<CustomerDTO> getByName(String customerName);
 }

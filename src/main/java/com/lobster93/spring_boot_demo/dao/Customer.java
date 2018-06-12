@@ -6,9 +6,6 @@ import lombok.Setter;
 
 import org.springframework.data.annotation.Id;
 
-/**
- * Данные в БД
- */
 @Getter
 @Setter
 @Builder
