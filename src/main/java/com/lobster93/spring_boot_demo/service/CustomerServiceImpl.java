@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Override
     public List<CustomerDTO> findAll() {
@@ -25,7 +29,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void save(Customer customer) {
+    public void save(CustomerDTO customerDTO) {
+        Customer customer = Customer.builder()
+                .name(customerDTO.getName())
+                .email(customerDTO.getEmail())
+                .build();
         customerRepository.save(customer);
 
     }
