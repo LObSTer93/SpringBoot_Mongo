@@ -1,5 +1,6 @@
 package com.lobster93.spring_boot_demo;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -17,6 +18,10 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EnableMongoRepositories("com.lobster93.spring_boot_demo.dao")
 @SpringBootApplication
 public class SpringBootDemoApplication extends SpringBootServletInitializer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDemoApplication.class, args);
+    }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
