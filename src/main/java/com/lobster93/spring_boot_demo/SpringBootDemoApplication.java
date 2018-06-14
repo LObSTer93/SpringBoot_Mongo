@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
-@ComponentScan({"com.lobster93.spring_boot_demo.service", "com.lobster93.spring_boot_demo.controller"})
+@ComponentScan({"com.lobster93.spring_boot_demo.service", "com.lobster93.spring_boot_demo.controller", "com.lobster93.spring_boot_demo.config"})
 @EnableMongoRepositories("com.lobster93.spring_boot_demo.dao")
 @SpringBootApplication
 public class SpringBootDemoApplication extends SpringBootServletInitializer {
